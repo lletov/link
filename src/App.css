@@ -74,3 +74,12 @@ p {
     gap: 8px;
   }
 }
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2.4rem;
+  padding-top: 12rem;
+}
