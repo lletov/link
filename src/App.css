@@ -1,10 +1,76 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
+  font-family: "Manrope", sans-serif;
+  font-size: 62.5%;
   scroll-behavior: smooth;
+
+  --main-black: hsl(0,0,13);
+  --light-blue: hsl(218, 57%, 97%);
+  --dark-blue: hsl(217, 51%, 91%);
+  --main-white: hsl(0,0,100);
+}
+
+h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.4rem;
+  font-weight: 900;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+p {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 1rem 1.2rem;
+  color: var(--main-black);
+  background-color: var(--light-blue);
+  border: none;
+  border-radius: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+  img {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.btn:hover {
+  background-color: var(--dark-blue);
+}
+
+.btn.square {
+  padding: 0px;
+  width: 4rem;
+  height: 4rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 24px 0px 24px;
+  .header-nav {
+    display: flex;
+    gap: 8px;
+  }
 }
