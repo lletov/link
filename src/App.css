@@ -111,7 +111,7 @@ p {
   background-color: var(--main-black-hover);
 }
 
-.form {
+.shorten-form {
   display: flex;
   flex-direction: column;
   align-items: start;
