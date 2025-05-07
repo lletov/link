@@ -6,7 +6,7 @@ export default function Banner() {
     <div className='banner'>
       <h1>Short your link</h1>
       <h3>Make a simple, clean, short links, that are easy to post, send and share</h3>
-      <Form/>
+      <Form maxLength={120}/>
     </div>
   )
 }
