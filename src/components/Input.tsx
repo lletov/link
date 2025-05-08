@@ -28,7 +28,7 @@ export default function Input({maxLength}:TProps) {
         />
         <div className='input-btns'>
             <p>{`${text.length}/${maxLength}`}</p>
-            <button onClick={clearInput}><img src={clear}/></button>
+            {text.length > 0 && <button onClick={clearInput}><img src={clear}/></button>}
         </div>
     </div>
   )
