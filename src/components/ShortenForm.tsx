@@ -3,10 +3,20 @@ import BigButton from './BigButton'
 import ShortenIcon from './../assets/view_in_ar.svg'
 import Input from './Input'
 import appStore from '../store/AppStore';
+import { useState } from 'react';
 
 
 export default function ShortenForm() {
   const { shortenStatus, setShortenStatus, clearText } = appStore();
+
+  const [text, setText] = useState('');
+
+  function handleInput(text: string) {
+    setText(text);
+  }
+  function clearInput() {
+    setText('')
+  }
 
   const statuses = {
     input: {
@@ -28,7 +38,7 @@ export default function ShortenForm() {
         <p>{statuses[shortenStatus].title}</p>
         {/* <p className='error-text'>Error! Paste your link here</p> */}
         <div className='shorten-form-cta'>
-            <Input maxLength={80}/>
+            <Input maxLength={80} text={text} handleInput={handleInput} clearInput={clearInput}/>
             <BigButton title='Shorten' path={ShortenIcon} width={'12rem'}/>
         </div>
     </div>
