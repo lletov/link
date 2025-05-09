@@ -6,10 +6,25 @@ import Input from './Input'
 
 export default function ShortenForm() {
 
+  const status = {
+    input: {
+      title: 'Paste your link here',
+    },
+    pending: {
+      title: 'Few moments, making magic..',
+    },
+    resolved: {
+      title: 'Success! Here is your short link',
+    },
+    error: {
+      title: 'Oops, something gone wrong!',
+    }
+  }
+
   return (
     <div className='shorten-form'>
         <p>Paste your link here</p>
-        <p className='error-text'>Error! Paste your link here</p>
+        {/* <p className='error-text'>Error! Paste your link here</p> */}
         <div className='shorten-form-cta'>
             <Input maxLength={80}/>
             <BigButton title='Shorten' path={ShortenIcon} width={'12rem'}/>
