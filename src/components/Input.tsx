@@ -26,10 +26,10 @@ export default function Input({maxLength}:TProps) {
             placeholder='Link without spaces'
             maxLength={maxLength}
         />
-        <div className='input-btns'>
+        <section className='input-btns'>
             <p>{`${text.length}/${maxLength}`}</p>
             {text.length > 0 && <button onClick={clearInput}><img src={clear}/></button>}
-        </div>
+        </section>
     </div>
   )
 }

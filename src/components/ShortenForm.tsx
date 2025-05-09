@@ -10,7 +10,7 @@ export default function ShortenForm() {
     <div className='shorten-form'>
         <p>Paste your link here</p>
         <p className='error-text'>Error! Paste your link here</p>
-        <div>
+        <div className='shorten-form-cta'>
             <Input maxLength={80}/>
             <BigButton title='Shorten' path={ShortenIcon} width={'12rem'}/>
         </div>
