@@ -2,11 +2,13 @@ import React from 'react'
 import BigButton from './BigButton'
 import ShortenIcon from './../assets/view_in_ar.svg'
 import Input from './Input'
+import appStore from '../store/AppStore';
 
 
 export default function ShortenForm() {
+  const { shortenStatus, setShortenStatus, clearText } = appStore();
 
-  const status = {
+  const statuses = {
     input: {
       title: 'Paste your link here',
     },
@@ -23,7 +25,7 @@ export default function ShortenForm() {
 
   return (
     <div className='shorten-form'>
-        <p>Paste your link here</p>
+        <p>{statuses[shortenStatus].title}</p>
         {/* <p className='error-text'>Error! Paste your link here</p> */}
         <div className='shorten-form-cta'>
             <Input maxLength={80}/>
