@@ -11,7 +11,7 @@ interface StoreState {
 }
 
 const appStore = create<StoreState>((set) => ({
-  shortenStatus: 'resolved',
+  shortenStatus: 'error',
   rawLink: '',
   setShortenStatus: (newText) => set({ shortenStatus: newText }),
   clearRawLink: () => set({ rawLink: '' }),

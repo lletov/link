@@ -15,6 +15,7 @@
   --main-black-hover: hsl(0, 2%, 19%);
   --main-grey: hsl(0, 0%, 79%);
   --error-text: hsl(0, 70%, 70%);
+  --error-bg: hsl(359, 96%, 96%);
 }
 
 h1 {
@@ -214,6 +215,14 @@ p {
   overflow-x: hidden;
   h3 {
     font-weight: 700; 
+  }
+}
+
+.shorten-result-link.error {
+  color: var(--error-text);
+  background-color: var(--error-bg);
+  p {
+    font-weight: 700;
   }
 }
 
