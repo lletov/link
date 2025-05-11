@@ -10,19 +10,39 @@ import ReportIcon from './../assets/call_split.svg'
 import Input from './Input'
 import appStore from '../store/AppStore';
 import { useState } from 'react';
+import { shortenUrlCleanURI } from '../methods/API'
 
 
 export default function ShortenForm() {
-  const { shortenStatus, setShortenStatus, rawLink, setRawLink, clearRawLink } = appStore();
+  const { 
+    shortenStatus, 
+    setShortenStatus, 
+    rawLink, 
+    setRawLink, 
+    clearRawLink, 
+    shortLink, 
+    setShortLink 
+  } = appStore();
 
-  const [text, setText] = useState('');
   const bigButtonWidth = '12rem';
 
   function handleInput(text: string) {
-    setText(text);
+    setRawLink(text);
   }
   function clearInput() {
-    setText('')
+    clearRawLink()
+  }
+
+  async function shortenURL(url:string) {
+    console.log('url ' + url + ' recieved');
+    const noSpacesURL = url.replace(/\s+/g, '');
+    try {
+      const resultURL = await shortenUrlCleanURI(noSpacesURL);
+      setShortLink(resultURL);
+
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const statuses = {
@@ -57,8 +77,13 @@ export default function ShortenForm() {
         <p>{statuses[shortenStatus].title}</p>
         {shortenStatus === 'input' &&
           <div className='shorten-form-cta'>
-              <Input maxLength={80} text={text} handleInput={handleInput} clearInput={clearInput}/>
-              <BigButton title='Shorten' path={ShortenIcon} width={bigButtonWidth}/>
+              <Input maxLength={80} text={rawLink} handleInput={handleInput} clearInput={clearInput}/>
+              <BigButton 
+                title='Shorten' 
+                path={ShortenIcon} 
+                width={bigButtonWidth}
+                onClick={() => shortenURL(rawLink)}
+                />
           </div>
         }
         {shortenStatus === 'pending' && <ShortenPending/>}
@@ -84,7 +109,7 @@ export default function ShortenForm() {
               <section className='shorten-result-link'><h3>https.;l,fs_23sdfhiuerfidsnfsiudfwisnsidfsd</h3></section>
               <BigButton title='Copy' path={CopyIcon} width={bigButtonWidth}/>
             </div>
-            <p className='from-p'>From: https://www.blackmagicdesign.com/products/davinciresolve</p>
+            <p className='from-p'>From: {shortLink}</p>
             <div className='instruments-btns'>
               <DefaultButton title='History' path={HistoryIcon}/>
               <DefaultButton title='Make another one' path={RefreshIcon}/>
