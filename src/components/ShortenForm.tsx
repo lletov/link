@@ -40,10 +40,21 @@ export default function ShortenForm() {
     }
   }
 
+  const errorsList = [
+    'Check if the domain is correct',
+    'Check if the site is online',
+    'Check the address bars and punctuation',
+    'The URL may be being used for spam',
+    'The URL may have been blocked',
+    'The URL may have been reported',
+    'The URL was recently shortened',
+    'The URL is not allowed',
+    'You shortened many URLs in a short time',
+  ]
+
   return (
     <div className='shorten-form'>
         <p>{statuses[shortenStatus].title}</p>
-        {/* <p className='error-text'>Error! Paste your link here</p> */}
         {shortenStatus === 'input' &&
           <div className='shorten-form-cta'>
               <Input maxLength={80} text={text} handleInput={handleInput} clearInput={clearInput}/>
@@ -53,7 +64,14 @@ export default function ShortenForm() {
         {shortenStatus === 'pending' && <ShortenPending/>}
         {shortenStatus === 'error' &&
           <>
-            <section className='shorten-result-link error'><p>Error somewhere...</p></section>
+            <section className='shorten-result-link error'>
+              <p>Error somewhere...</p>
+              {/* <ul>
+                {errorsList.map((err, index) => (
+                  <li key={index}>{err}</li>
+                ))}
+              </ul> */}
+              </section>
             <div className='instruments-btns'>
               <DefaultButton title='Try again' path={RefreshIcon}/>
               <DefaultButton title='Report problem' path={ReportIcon}/>
