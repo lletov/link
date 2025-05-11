@@ -4,14 +4,18 @@ type TShortenStatus = 'input' | 'pending' | 'resolved' | 'error';
 
 interface StoreState {
   shortenStatus: TShortenStatus;
+  rawLink: string;
+  setRawLink: (newText: string) => void;
+  clearRawLink: () => void;
   setShortenStatus: (newText: TShortenStatus) => void;
-  clearText: () => void;
 }
 
 const appStore = create<StoreState>((set) => ({
-  shortenStatus: 'input',
+  shortenStatus: 'pending',
+  rawLink: '',
   setShortenStatus: (newText) => set({ shortenStatus: newText }),
-  clearText: () => set({ shortenStatus: 'input' }),
+  clearRawLink: () => set({ rawLink: '' }),
+  setRawLink: (newText) => set({ rawLink: newText }),
 }));
 
 export default appStore;

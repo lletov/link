@@ -1,5 +1,6 @@
 import React from 'react'
 import BigButton from './BigButton'
+import ShortenPending from './ShortenPending'
 import ShortenIcon from './../assets/view_in_ar.svg'
 import Input from './Input'
 import appStore from '../store/AppStore';
@@ -7,7 +8,7 @@ import { useState } from 'react';
 
 
 export default function ShortenForm() {
-  const { shortenStatus, setShortenStatus, clearText } = appStore();
+  const { shortenStatus, setShortenStatus, rawLink, setRawLink, clearRawLink } = appStore();
 
   const [text, setText] = useState('');
 
@@ -37,10 +38,13 @@ export default function ShortenForm() {
     <div className='shorten-form'>
         <p>{statuses[shortenStatus].title}</p>
         {/* <p className='error-text'>Error! Paste your link here</p> */}
-        <div className='shorten-form-cta'>
-            <Input maxLength={80} text={text} handleInput={handleInput} clearInput={clearInput}/>
-            <BigButton title='Shorten' path={ShortenIcon} width={'12rem'}/>
-        </div>
+        {shortenStatus === 'input' &&
+          <div className='shorten-form-cta'>
+              <Input maxLength={80} text={text} handleInput={handleInput} clearInput={clearInput}/>
+              <BigButton title='Shorten' path={ShortenIcon} width={'12rem'}/>
+          </div>
+        }
+        {shortenStatus === 'pending' && <ShortenPending/>}
     </div>
   )
 }
