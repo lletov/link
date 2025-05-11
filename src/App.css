@@ -206,15 +206,22 @@ p {
   background-color: var(--light-blue);
   border-radius: 1.2rem;
   width: 100%;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   padding: 1rem 1.6rem;
   margin-right: 1.2rem;
   text-align: start;
   overflow-x: hidden;
   h3 {
+    position: relative;
     font-weight: 700; 
+    &::before {
+      content: '';  
+      position: absolute;
+      right: -1.6rem;
+      top: 0;
+      width: 1.6rem;
+      height: 100%;
+      background: linear-gradient(to right, transparent, var(--light-blue));
+    }
   }
 }
 
@@ -224,6 +231,10 @@ p {
   p {
     font-weight: 700;
   }
+}
+
+.from-p {
+  word-break: break-all;
 }
 
 .instruments-btns {

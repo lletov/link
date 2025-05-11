@@ -66,7 +66,7 @@ export default function ShortenForm() {
               <section className='shorten-result-link'><h3>https.;l,fs_23sdfhiuerfidsnfsiudfwisnsidfsd</h3></section>
               <BigButton title='Copy' path={CopyIcon} width={bigButtonWidth}/>
             </div>
-            <p>From: https://www.blackmagicdesign.com/products/davinciresolve</p>
+            <p className='from-p'>From: https://www.blackmagicdesign.com/products/davinciresolve</p>
             <div className='instruments-btns'>
               <DefaultButton title='History' path={HistoryIcon}/>
               <DefaultButton title='Make another one' path={RefreshIcon}/>
